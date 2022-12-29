@@ -23,8 +23,6 @@ namespace WebApi.Controllers
         private VowelDTO VowelCntrl (VowelTxtDTO vowelTxt) 
         {
             VowelDTO voweldto = new VowelDTO();
-            voweldto.Vowels = new List<char>();
-            voweldto.VowelsCount = new List<int>();
 
             voweldto.YourText = vowelTxt.txt;
             if (vowelTxt.nat == "en")
