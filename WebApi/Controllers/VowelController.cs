@@ -10,31 +10,28 @@ namespace WebApi.Controllers
     {
 
         [HttpPost("vowelTxt")]
-        public async Task<ActionResult<VowelDTO>> GetString(VowelTxtDTO vowelTxt)
+        public async Task<ActionResult<VowelDTO>> PostVowel(VowelTxtDTO vowelTxt)
         {
             VowelDTO voweldto = new VowelDTO();
-            voweldto.Vowels = new List<int>();
+            voweldto.Vowels = new List<char>();
+            voweldto.VowelsCount = new List<int>();
 
             voweldto.YourText = vowelTxt.txt;
             if (vowelTxt.nat == "en")
             {
-                voweldto.Txten = VowelChrs.txten;
+                voweldto.Vowels = VowelChrs.txten;
                 voweldto.Lang = "English";
-                foreach (var chrs in voweldto.Txten)
-                {
-                    voweldto.Vowels.Add(vowelTxt.txt.Where(x => x == chrs).Count());
-                }
             }
             else
             {
-                voweldto.Txttr = VowelChrs.txttr;
+                voweldto.Vowels = VowelChrs.txttr;
                 voweldto.Lang = "Türkçe";
-                foreach (var chrs in voweldto.Txttr)
-                {
-                    voweldto.Vowels.Add(vowelTxt.txt.Where(x => x == chrs).Count());
-                }
             }
-            
+
+            foreach (var chrs in voweldto.Vowels)
+            {
+                voweldto.VowelsCount.Add(vowelTxt.txt.Where(x => x == chrs).Count());
+            }
 
             return Ok(voweldto);
         }
