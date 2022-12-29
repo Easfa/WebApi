@@ -12,6 +12,16 @@ namespace WebApi.Controllers
         [HttpPost("vowelTxt")]
         public async Task<ActionResult<VowelDTO>> PostVowel(VowelTxtDTO vowelTxt)
         {
+            if(vowelTxt.txt is null) { return BadRequest(); }
+            else 
+            {
+                var voweldto = VowelCntrl(vowelTxt);
+                return Ok(voweldto);
+            }
+        }
+
+        private VowelDTO VowelCntrl (VowelTxtDTO vowelTxt) 
+        {
             VowelDTO voweldto = new VowelDTO();
             voweldto.Vowels = new List<char>();
             voweldto.VowelsCount = new List<int>();
@@ -30,10 +40,9 @@ namespace WebApi.Controllers
 
             foreach (var chrs in voweldto.Vowels)
             {
-                voweldto.VowelsCount.Add(vowelTxt.txt.Where(x => x == chrs).Count());
+                voweldto.VowelsCount.Add(vowelTxt.txt.ToLower().Where(x => x == chrs).Count());
             }
-
-            return Ok(voweldto);
+            return voweldto;
         }
     }
 }
