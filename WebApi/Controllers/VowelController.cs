@@ -30,7 +30,7 @@ namespace WebApi.Controllers
 
             foreach (var chrs in voweldto.Vowels)
             {
-                voweldto.VowelsCount.Add(vowelTxt.txt.Where(x => x == chrs).Count());
+                voweldto.VowelsCount.Add(vowelTxt.txt.ToLower().Where(x => x == chrs).Count());
             }
 
             return Ok(voweldto);
