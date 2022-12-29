@@ -23,7 +23,7 @@ namespace WebApi.Controllers
             }
             else if (vowelTxt.nat == "en")
             {
-                voweldto.Txttr = VowelChrs.txten;
+                voweldto.Txten = VowelChrs.txten;
                 voweldto.Lang = "English";
                 voweldto.Vowels = vowelTxt.txt.Where(x => VowelChrs.txten.Contains(x)).ToList();
             }
