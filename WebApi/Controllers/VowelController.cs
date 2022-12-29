@@ -10,7 +10,7 @@ namespace WebApi.Controllers
     {
 
         [HttpPost("vowelTxt")]
-        public async Task<ActionResult<VowelDTO>> PostVowel(VowelTxtDTO vowelTxt)
+        public Task<ActionResult<VowelDTO>> PostVowel(VowelTxtDTO vowelTxt)
         {
             if(vowelTxt.txt is null) { return BadRequest(); }
             else 
