@@ -1,6 +1,6 @@
 ﻿namespace WebApi.Models
 {
-    public class VowelTxt
+    public class VowelTxtDTO
     {
         public string txt { get; set; }
 

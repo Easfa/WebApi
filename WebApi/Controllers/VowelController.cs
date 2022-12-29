@@ -9,8 +9,8 @@ namespace WebApi.Controllers
     public class VowelController : ControllerBase
     {
 
-        [HttpPost("text")]
-        public async Task<ActionResult<VowelDTO>> GetString(VowelTxt vowelTxt)
+        [HttpPost("vowelTxt")]
+        public async Task<ActionResult<VowelDTO>> GetString(VowelTxtDTO vowelTxt)
         {
             VowelDTO voweldto = new VowelDTO();
             voweldto.Vowels = new List<int>();
